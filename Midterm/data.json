@@ -1,0 +1,21 @@
+{
+    "Lake": {
+        "filename": "lakemn.jpeg",
+        "description" : "We are a company that is dedicated to providing high-quality, reliable marine services to the Lake Minnetonka community. Now two years in operation, our customer base continues to accommodate recreational watercraft users as well as local firms--one such example is Geico Insurance!",
+        "caption": "A look over Lake Minnetonka"
+    },
+
+    "Tow1": {
+        "filename": "tow1.png",
+        "description" : "As a company providing designated-driving (or \"captaining\") to our customers, we proudly contribute to a safer lake community by reducing the risk of watercraft accidents.",
+        "caption" : "One of our towing services"
+        
+    },
+
+    "Tow2": {
+        "filename": "tow2.png",
+        "description" : "As we look toward new horizons, we hope to achieve partnership with local restaurants as well as expand our services to other lakeside communities. Please contact us if you have any queries concerning partnership.",
+        "caption" : "Please reach out for inquiries for our services"
+        
+    }
+}
