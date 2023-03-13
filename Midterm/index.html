@@ -5,38 +5,16 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Home</title>
-	<style>
-		.homepage-title {
-			color: white;
-			font-size: 100px;
-			padding-top: 10px;
-			padding-left: 20px;
-			animation: fade-in 2s ease;
-			animation-fill-mode: forwards;
-		}
-		@keyframes fade-in {
-  			from {opacity: 0.0;}
-  			to {opacity: 1.0;
-				transform: translate(0,40px);}
-		}
-		body {
-			background-image: url(./images/lakemn.jpeg);
-			background-position: 50% 70%; 
-		}
-		body a {
-			color: lightblue;
-		}
-		.homepage-text {
-			color:white;
-			opacity: 0.0;
-			padding-left: 20px;
-			animation: fade-in 2s ease;
-			animation-fill-mode: forwards;
-			animation-delay: 2s;
-		}
-	</style>
 	
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+
+	<style>
+		body {
+    		background-image: url(./images/lakemn.jpeg);
+    		background-position: 50% 70%; 
+		}
+	</style>
 
 </head>
 <body>
@@ -72,10 +50,10 @@
 	</header>
 
 	<main>
-		<div class="homepage-title">
+		<div class="div-title">
 			Serving Lake Minnetonka Since 2020
 		</div>
-		<div class="homepage-text">
+		<div class="div-text" style="animation-delay: 1s">
 			<h2>
 				Tows, Repairs, Transport and More...
 			</h2>
@@ -84,7 +62,7 @@
 				<a href="contact.html">Contact us</a> or download our app from the App Store to learn more!
 			</h4>
 		<div>
-		<div class="homepage-text">
+		<div class="div-text" style="animation-delay: 2s">
 			<h2>
 				Find us on the App Store
 			</h2>

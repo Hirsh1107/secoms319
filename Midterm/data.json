@@ -1,21 +1,24 @@
 {
     "Lake": {
-        "filename": "lakemn.jpeg",
-        "description" : "We are a company that is dedicated to providing high-quality, reliable marine services to the Lake Minnetonka community. Now two years in operation, our customer base continues to accommodate recreational watercraft users as well as local firms--one such example is Geico Insurance!",
-        "caption": "A look over Lake Minnetonka"
+        "filename": "logo.png",
+        "title": "What is Float?",
+        "description" : "We are a company that is dedicated to providing high-quality, reliable marine services to the Lake Minnetonka community. Now two years in operation, our customer base continues to accommodate recreational watercraft users as well as local firms--even Geico Insurance!",
+        "caption": "Float logo"
     },
 
     "Tow1": {
         "filename": "tow1.png",
-        "description" : "As a company providing designated-driving (or \"captaining\") to our customers, we proudly contribute to a safer lake community by reducing the risk of watercraft accidents.",
-        "caption" : "One of our towing services"
+        "title": "How do we improve our community?",
+        "description": "As a company providing designated-driving (or \"captaining\") to our customers, we proudly contribute to a safer lake community by reducing the risk of watercraft accidents.",
+        "caption" : "Towing a boat 1"
         
     },
 
     "Tow2": {
         "filename": "tow2.png",
+        "title": "What are our company goals?",
         "description" : "As we look toward new horizons, we hope to achieve partnership with local restaurants as well as expand our services to other lakeside communities. Please contact us if you have any queries concerning partnership.",
-        "caption" : "Please reach out for inquiries for our services"
+        "caption" : "Towing a boat 2"
         
     }
 }
