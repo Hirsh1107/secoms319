@@ -4,7 +4,20 @@ import { Products } from './Products';
 import './styles.css';
 import "bootstrap/dist/css/bootstrap.css"
 
-import crocs from "./images/crocs.jpg"
+import crocs from "./images/crocs.jpg"; 
+import basketball from "./images/basketball_shoes.jpg"; 
+import boots from "./images/boots.jpg"; 
+import converse from "./images/converse.jpg"; 
+import sandals from "./images/sandals.jpg"; 
+import tennis from "./images/tennis_shoes.jpg"; 
+const images = {
+  "crocs": crocs,
+  "basketball": basketball,
+  "boots": boots,
+  "converse": converse,
+  "sandals": sandals,
+  "tennis": tennis
+}
 
 function App() {
   const [ProductsList, setProductsList] = useState(Products);
@@ -104,7 +117,7 @@ function App() {
             <div className="grid-container">
               {ProductsList.map((product, index) => (
                 <div className="grid-item">
-                <img src={crocs} alt={product.title} className = "product-img" />
+                <img src={images[product.img_src]} alt={product.title} className = "product-img" />
                 <h2>{product.title}</h2>
                 <p>{product.description}</p>
                 <p>${product.price}</p>
