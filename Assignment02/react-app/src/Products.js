@@ -1,45 +1,45 @@
 export const Products = [
     {
         "id": 1,
-        "title": "product 1",
-        "price": 40,
-        "description": "this is product 1",
-        "img_src": ""
+        "title": "Crocs",
+        "price": 49.99,
+        "description": "Red Crocs, size 10",
+        "img_src": "./images/crocs.jpg"
     },
     {
         "id": 2,
-        "title": "product 2",
-        "price": 40,
-        "description": "this is product 2",
-        "img_src": ""
+        "title": "Sandals",
+        "price": 56.99,
+        "description": "Leather sandals, size 8",
+        "img_src": "./images/sandals.jpg"
     },
     {
         "id": 3,
-        "title": "product 3",
-        "price": 40,
-        "description": "this is product 3",
-        "img_src": ""
+        "title": "Converse",
+        "price": 68.99,
+        "description": "Converse, baby blue, size 7",
+        "img_src": "./images/converse.jpg"
     },
     {
         "id": 4,
-        "title": "product 4",
-        "price": 40,
-        "description": "this is product 4",
-        "img_src": ""
+        "title": "Nike",
+        "price": 140.99,
+        "description": "Nike basketball shoes, size 11",
+        "img_src": "./images/basketball_shoes.jpg"
     },
     {
         "id": 5,
-        "title": "product 5",
-        "price": 40,
-        "description": "this is product 5",
-        "img_src": ""
+        "title": "Tennis shoes",
+        "price": 62.99,
+        "description": "Tennis/hiking shoes, size 9",
+        "img_src": "./images/tennis_shoes.jpg"
     },
     {
         "id": 6,
-        "title": "product 6",
-        "price": 40,
-        "description": "this is product 6",
-        "img_src": ""
+        "title": "Boots",
+        "price": 84.99,
+        "description": "Timberland boots, general purpose, size 11",
+        "img_src": "./images/boots.jpg"
     }
 
 ]

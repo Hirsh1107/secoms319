@@ -4,45 +4,51 @@ import { Products } from './Products';
 import './styles.css';
 import "bootstrap/dist/css/bootstrap.css"
 
+import crocs from "./images/crocs.jpg"
 
 function App() {
-  const [ProductsCategory, setProductsCategory] = useState(Products);
+  const [ProductsList, setProductsList] = useState(Products);
   const [searchTerm, setSearchTerm] = useState('');
   const [cartItems, setCartItems] = useState([]);
   const [showCart, setShowCart] = useState(false);
-  let [count, setCount] = useState(0);
+  const [countList, setCountList] = useState(Array(Products.length).fill(1));
+
 
   function handleSearchChange(event) {
     setSearchTerm(event.target.value);
-    const results = ProductsCategory.filter(eachProduct => {
-      if (event.target.value === "") return ProductsCategory;
-      return eachProduct.title.toLowerCase().includes(event.target.value.toLowerCase())
-    });
-    setProductsCategory(results);
+    
   }
 
   function handleSearchSubmit(event) {
     event.preventDefault();
     // Perform search logic here
-
+    const results = ProductsList.filter(eachProduct => {
+      if (searchTerm === "") return ProductsList;
+      return eachProduct.title.toLowerCase().includes(searchTerm.toLowerCase())
+    });
+    setProductsList(results);
   }
 
-  function increment() {
-    count++;
-    setCount(count);
-  }
-  function decrement() {
-    count--;
-    if(count < 0) {
-      count = 0;
+  function QuantityPicker(props) {
+    const i = props.i;
+
+    function increment() {
+      const updatedCountList = [...countList];
+      updatedCountList[i]++;
+      setCountList(updatedCountList);
     }
-    setCount(count);
-  }
+    function decrement() {
+      const updatedCountList = [...countList];
+      updatedCountList[i]--;
+      if(updatedCountList[i] < 1) {
+        updatedCountList[i] = 1;
+      }
+      setCountList(updatedCountList);
+    }
 
-  function quantity_picker() {
     return (
-      <div>
-        <p>{count}</p>
+      <div class = "qty-picker">
+        <p>{countList[i]}</p>
         <button onClick={increment}>+</button>
         <button onClick={decrement}>-</button>
       </div>
@@ -50,15 +56,16 @@ function App() {
   }
 
   function handleAddToCart(product) {
+    const count = countList[product.id - 1];
     const existingCartItemIndex = cartItems.findIndex(
       item => item.product.id === product.id
     );
     if (existingCartItemIndex !== -1) {
       const updatedCartItems = [...cartItems];
-      updatedCartItems[existingCartItemIndex].quantity++;
+      updatedCartItems[existingCartItemIndex].quantity += count;
       setCartItems(updatedCartItems);
     } else {
-      setCartItems([...cartItems, { product: product, quantity: 1 }]);
+      setCartItems([...cartItems, { product: product, quantity: count }]);
     }
   }
   
@@ -84,7 +91,7 @@ function App() {
             <div class="container">
               <h1>Store Assignment 2</h1>
               <h2>Products: {Products.length}</h2>
-              <button onClick={handleCartViewRequested}>View Cart</button>
+              <button onClick={handleCartViewRequested}>View Cart ({cartItems.length})</button>
 
               <div class="d-flex flex-wrap align-items-center justify-content-between justify-content-lg-end">
                 <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" onSubmit={handleSearchSubmit}>
@@ -95,13 +102,13 @@ function App() {
             </div>
 
             <div className="grid-container">
-              {ProductsCategory.map((product, i) => (
+              {ProductsList.map((product, index) => (
                 <div className="grid-item">
-                <img src={product.img_src} alt={product.title} />
+                <img src={crocs} alt={product.title} className = "product-img" />
                 <h2>{product.title}</h2>
                 <p>{product.description}</p>
                 <p>${product.price}</p>
-                {quantity_picker()}
+                {<QuantityPicker i={index}/>}
                 <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
               </div>
               ))}
@@ -130,7 +137,7 @@ function CartView(props) {
         <ul>
           {cartItems.map((item, index) => (
             <li key={index}>
-              {item.product.name} - {item.quantity} x ${item.product.price}
+              {item.product.title} - {item.quantity} x ${item.product.price}
             </li>
           ))}
         </ul>
