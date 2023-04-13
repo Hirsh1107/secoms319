@@ -21,3 +21,20 @@
     width: 120px;
     height: 120px;
 }
+
+.background {
+    background-image: linear-gradient(#0DA61E, #86E414);
+}
+
+h1, h2, p, li {
+    color: white;
+}
+
+button {
+    transition-duration: 0.5s;
+}
+
+button:hover {
+    background-color: green;
+    color: white;
+}
