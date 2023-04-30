@@ -2,9 +2,13 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const app = express();
+const Product = require("./dataSchema.js");
 
 app.use(express.json());
 app.use(cors());
+
+app.use(express.static("public"));
+app.use("./images", express.static("images"));
 
 mongoose.connect("mongodb://127.0.0.1:27017/reactdata",
     {
@@ -27,17 +31,10 @@ app.get("/", async (req, resp) => {
     resp.send(allProducts);
 });
 
-function postMethod(postData) {
-    fetch('http://localhost:8081/addUser', {
-    method: 'POST',
-    headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({ postData })
-    })
-    .then(response => response.json())
-    .then(data => {
-    console.log(data);
-    var container = document.getElementById("showData");
-    container.innerHTML = JSON.stringify(data);
-    });
-}    
-    
+app.get("/:id", async (req, resp) => {
+    const id = req.params.id;
+    const query = { _id: id };
+    const oneProduct = await Product.findOne(query);
+    console.log(oneProduct);
+    resp.send(oneProduct);
+});
