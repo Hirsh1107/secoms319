@@ -5,34 +5,68 @@ function App() {
   const [oneProduct, setOneProduct] = useState([]);
   const [view, setView] = useState(1); // 1 = create, 2 = read, 3 = update, 4 = delete
   
+
+  
   function handleViewChange(viewnum) {
     setView(viewnum)
   }
   
   function Form() {
-    const [formData, setFormData] = useState({
-      _id: '',
-      title: '',
-      price: '',
-      description: '',
-      category: '',
-      image: '',
-      rate: 0,
-      count: 0
+    const [addNewProduct, setAddNewProduct] = useState({
+      _id: 0,
+      title: "",
+      price: 0.0,
+      description: "",
+      category: "",
+      image: "http://127.0.0.1:4000/images/",
+      rating: { rate: 0.0, count: 0 },
     });
     
-    const handleSubmit = (e) => {
-      e.preventDefault()
-      alert(formData._id)
-    }
     
-    const handleInputChange = (e) => {
-      const { name, value } = e.target;
-      setFormData({
-        ...formData,
-        [name]: value,
-      });
-    };
+function handleOnSubmit(e) {
+  e.preventDefault();
+  console.log(e.target.value);
+  fetch("http://localhost:4000/insert", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(addNewProduct),
+  })
+  .then((response) => response.json())
+  .then((data) => {
+  console.log("Post a new product completed");
+  console.log(data);
+  if (data) {
+  const value = Object.values(data);
+  alert(value);
+  }
+  });
+  }
+    
+  function handleChange(evt) {
+    const value = evt.target.value;
+    if (evt.target.name === "_id") {
+    setAddNewProduct({ ...addNewProduct, _id: value });
+    } else if (evt.target.name === "title") {
+    setAddNewProduct({ ...addNewProduct, title: value });
+    } else if (evt.target.name === "price") {
+    setAddNewProduct({ ...addNewProduct, price: value });
+    } else if (evt.target.name === "description") {
+    setAddNewProduct({ ...addNewProduct, description: value });
+    } else if (evt.target.name === "category") {
+    setAddNewProduct({ ...addNewProduct, category: value });
+    } else if (evt.target.name === "image") {
+    const temp = value;
+    setAddNewProduct({ ...addNewProduct, image: temp });
+    } else if (evt.target.name === "rate") {
+    setAddNewProduct({ ...addNewProduct, rating: { rate: value } });
+    } else if (evt.target.name === "count") {
+    const temp = addNewProduct.rating.rate;
+    setAddNewProduct({
+    ...addNewProduct,
+     rating: { rate: temp, count: value },
+    });
+    }
+    }
     
     function FormElement(props) {
       return (
@@ -42,7 +76,7 @@ function App() {
         type="text" 
         id = {props.text}
         value = {props.val}
-        onChange={handleInputChange}
+        onChange={handleChange}
         />
         </div>
         )
@@ -51,15 +85,15 @@ function App() {
       return (
         <div>
         <h1>Post new item</h1>
-        <form onSubmit={handleSubmit}>
-        <FormElement text={"_id"} val={formData._id}/>
-        <FormElement text={"title"} val={formData.title}/>
-        <FormElement text={"price"}  val={formData.price}/>
-        <FormElement text={"description"} val={formData.description}/>
-        <FormElement text={"category"} val={formData.category}/>
-        <FormElement text={"image"} val={formData.image}/>
-        <FormElement text={"rate"} val={formData.rate}/>
-        <FormElement text={"count"} val={formData.count}/>
+        <form onSubmit={handleOnSubmit}>
+        <FormElement text={"_id"} val={addNewProduct._id}/>
+        <FormElement text={"title"} val={addNewProduct.title}/>
+        <FormElement text={"price"}  val={addNewProduct.price}/>
+        <FormElement text={"description"} val={addNewProduct.description}/>
+        <FormElement text={"category"} val={addNewProduct.category}/>
+        <FormElement text={"image"} val={addNewProduct.image}/>
+        <FormElement text={"rate"} val={addNewProduct.rate}/>
+        <FormElement text={"count"} val={addNewProduct.count}/>
         <input type="submit" />
         </form>
         </div>
@@ -114,8 +148,29 @@ function App() {
     Rate :{el.rating.rate} and Count:{el.rating.count} <br />
     </div>
   ));
-      
-    
+
+  const [checked4, setChecked4] = useState(false);
+  const [index, setIndex] = useState(0);
+
+  function deleteOneProduct(deleteid) {
+    console.log("Product to delete :", deleteid);
+    fetch("http://localhost:4000/delete/", {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ _id: deleteid }),
+    })
+    .then((response) => response.json())
+    .then((data) => {
+    console.log("Delete a product completed : ", deleteid);
+    console.log(data);
+    if (data) {
+    const value = Object.values(data);
+    alert(value);
+    }
+    });
+    setChecked4(!checked4);
+  }
+       
   //handle all views here
   function getView() {
     switch (view) {
