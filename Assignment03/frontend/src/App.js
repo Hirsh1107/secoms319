@@ -18,9 +18,13 @@ function App() {
     price: 0.0
   });
   const [id, setId] = useState(0);
+  const [show, setShow] = useState(false);
   
   function handleViewChange(viewnum) {
-    setView(viewnum)
+    if (show) {
+      setShow(false);
+    }
+    setView(viewnum);
   }
 
   function handleOnSubmit(e) {
@@ -85,7 +89,7 @@ function App() {
 
   const showAllItems = product.map((el) => (
     <div key={el._id}>
-    <img src={el.image} width={30} /> <br />
+    <img src={el.image} /> <br />
     Title: {el.title} <br />
     Category: {el.category} <br />
     Price: {el.price} <br />
@@ -105,15 +109,17 @@ function App() {
         const dataArr = [];
         dataArr.push(data);
         setOneProduct(dataArr);
+        setShow(true);
       });
     } else {
       console.log("Wrong number of Product id.");
+      setShow(false);
     }
   }
 
   const showOneItem = oneProduct.map((el) => (
     <div key={el._id}>
-    <img src={el.image} width={30} /> <br />
+    <img src={el.image} /> <br />
     Title: {el.title} <br />
     Category: {el.category} <br />
     Price: {el.price} <br />
@@ -179,17 +185,33 @@ function App() {
       case 1: 
       return (
         <div>
-          <h1>A view to add or Create a new product to the database in Mongo</h1>
+          <h1>1: A view to add or Create a new product to the database in Mongo</h1>
         <h3>Add a new product :</h3>
         <form action="">
         <input type="number" placeholder="id?" name="_id" value={addNewProduct._id} onChange={handleChange} />
+        <label for="_id"> Id</label>
+        <br></br>
         <input type="text" placeholder="title?" name="title" value={addNewProduct.title} onChange={handleChange} />
+        <label for="title"> Title</label>
+        <br></br>
         <input type="number" placeholder="price?" name="price" value={addNewProduct.price} onChange={handleChange} />
+        <label for="price"> Price</label>
+        <br></br>
         <input type="text" placeholder="description?" name="description" value={addNewProduct.description} onChange={handleChange} />
+        <label for="description"> Description</label>
+        <br></br>
         <input type="text" placeholder="category?" name="category" value={addNewProduct.category} onChange={handleChange} />
+        <label for="Category"> Category</label>
+        <br></br>
         <input type="text" placeholder="image?" name="image" value={addNewProduct.image} onChange={handleChange} />
+        <label for="image"> Image source</label>
+        <br></br>
         <input type="number" placeholder="rate?" name="rate" value={addNewProduct.rating.rate} onChange={handleChange} />
+        <label for="rate"> Rating</label>
+        <br></br>
         <input type="number" placeholder="count?" name="count" value={addNewProduct.rating.count} onChange={handleChange} />
+        <label for="count"> Count</label>
+        <br></br>
         <button type="submit" onClick={handleOnSubmit}>
         submit
         </button>
@@ -215,7 +237,7 @@ function App() {
         <label for="update1">Which Product to modify?</label>
         <button onClick={() => getOneProduct(updateProduct._id)}>Search</button>
         <br></br>
-        <div>{showOneItem}</div>
+        {show && <div>{showOneItem}</div>}
         <br></br>
         <input type="number" id="change" name="price" placeholder="price" value={updateProduct.price} onChange={handleUpdate}/>
         <label for="change">What is the new price?</label>
@@ -232,11 +254,23 @@ function App() {
         <label for="message">Which Product to delete?</label>
         <button onClick={() => getOneProduct(id)}>Search</button>
         <br></br>
-        <div>{showOneItem}</div>
+        {show && <div>{showOneItem}</div>}
         <br></br>
         <button onClick={() => deleteOneProduct(id)}>Delete</button>
         </div>
       );
+
+      case 5:
+        return (
+          <div>
+            <h1>Credits: Team 57</h1>
+            <h3>Jason Jiang (<a href="mailto:jjiang27@iastate.edu">Email</a>) and Andrew Hirsh (<a href="mailto:ahirsh@iastate.edu">Email</a>)</h3>
+            <p>Created for COMS319 @ Iowa State University taught by Abraham Aldaco (<a href="mailto:aaldaco@iastate.edu">Email</a>). View all of our projects <a href="https://github.com/JJiang76/secoms319" target="_blank" rel="noreferrer">here</a>.</p>
+            <br></br>
+            <p>This project uses the MERN stack to develop a prototype store application. Using the navigation buttons, the user can add, view, update, and delete items from the collection. The app uses single page web development principles as well. </p>
+
+          </div>
+        )
     }
   }
         
@@ -247,6 +281,7 @@ function App() {
     <button onClick={() => getAllProducts()}>Read</button>
     <button onClick={() => handleViewChange(3)}>Update</button>
     <button onClick={() => handleViewChange(4)}>Delete</button>
+    <button onClick={() => handleViewChange(5)}>Credits</button>
     {getView()}
     </div>
     );
