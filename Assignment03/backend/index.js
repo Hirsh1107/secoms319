@@ -78,5 +78,18 @@ app.post("/insert", async (req, res) => {
         res.send(JSON.stringify(messageResponse));
         } catch (err) {
         console.log("Error while adding a new product:" + err);
-        }
+    }
+});
+
+app.post("/update", async (req, res) => {
+    console.log(req.body);
+    const p_id = req.body._id;
+    const pprice = req.body.price;
+    try {
+        await Product.findByIdAndUpdate(p_id, { price: pprice});
+        const messageResponse = { message: `Product ${p_id} updated correctly` };
+        res.send(JSON.stringify(messageResponse));
+        } catch (err) {
+        console.log("Error while updating a product:" + err);
+    }
 });
