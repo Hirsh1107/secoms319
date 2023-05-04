@@ -1,3 +1,37 @@
-{
-    
-}
+[
+    {
+        "_id": 1,
+        "title": "Crab Wontons",
+        "price": 5.95,
+        "category": "Appetizer",
+        "image": "http://127.0.0.1:4000/images/img1.jpg"
+    },
+    {
+        "_id": 2,
+        "title": "General Tso's Chicken",
+        "price": 12.25,
+        "category": "Chicken",
+        "image": "http://127.0.0.1:4000/images/img2.jpg"
+    },
+    {
+        "_id": 3,
+        "title": "Kung Pao Chicken",
+        "price": 10.95,
+        "category": "Chicken",
+        "image": "http://127.0.0.1:4000/images/img3.jpg"
+    },
+    {
+        "_id": 4,
+        "title": "Mongolian Beef",
+        "price": 11.95,
+        "category": "Beef",
+        "image": "http://127.0.0.1:4000/images/img4.jpg"
+    },
+    {
+        "_id": 5,
+        "title": "Hunan Style Hot Fish",
+        "price": 12.95,
+        "category": "Seafood",
+        "image": "http://127.0.0.1:4000/images/img5.jpg"
+    }
+]

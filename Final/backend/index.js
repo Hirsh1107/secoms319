@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use(express.static("public"));
-app.use("./images", express.static("images"));
+app.use("/images", express.static("images"));
 
 mongoose.connect("mongodb://127.0.0.1:27017/reactdata",
     {
@@ -42,14 +42,12 @@ app.get("/:id", async (req, resp) => {
 app.delete("/delete", async (req, res) => {
     console.log("Delete :", req.body);
     try {
-    const query = { _id: req.body._id };
-    await Product.deleteOne(query);
-    const messageResponse = {
-    message: `Product ${req.body._id} deleted correctly`,
-    };
-    res.send(JSON.stringify(messageResponse));
+        const query = { _id: req.body._id };
+        await Product.deleteOne(query);
+        const messageResponse = { message: `Product ${req.body._id} deleted correctly`, };
+        res.send(JSON.stringify(messageResponse));
     } catch (err) {
-    console.log("Error while deleting :" + p_id + " " + err);
+        console.log("Error while deleting :" + p_id + " " + err);
     }
 });
 
@@ -58,14 +56,12 @@ app.post("/insert", async (req, res) => {
     const p_id = req.body._id;
     const ptitle = req.body.title;
     const pprice = req.body.price;
-    const pdescription = req.body.description;
     const pcategory = req.body.category;
     const pimage = req.body.image;
     const formData = new Product({
         _id: p_id,
         title: ptitle,
         price: pprice,
-        description: pdescription,
         category: pcategory,
         image: pimage
     });
@@ -73,7 +69,7 @@ app.post("/insert", async (req, res) => {
         await Product.create(formData);
         const messageResponse = { message: `Product ${p_id} added correctly` };
         res.send(JSON.stringify(messageResponse));
-        } catch (err) {
+    } catch (err) {
         console.log("Error while adding a new product:" + err);
     }
 });
@@ -86,7 +82,7 @@ app.post("/update", async (req, res) => {
         await Product.findByIdAndUpdate(p_id, { price: pprice});
         const messageResponse = { message: `Product ${p_id} updated correctly` };
         res.send(JSON.stringify(messageResponse));
-        } catch (err) {
+    } catch (err) {
         console.log("Error while updating a product:" + err);
     }
 });
