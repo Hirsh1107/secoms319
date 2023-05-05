@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import './App.css';
 import logo from './images/logo.jpg'
+import bar from './images/bar.jpg'
+import './App.css'
 
 function App() {
   const [product, setProduct] = useState([]);
@@ -46,16 +47,30 @@ function App() {
               <h1>Menu view</h1>
               {showAllItems}
             </div>
+          );
+
+        case 3:
+          return (
+            <div>
+              <h1>Contact page</h1> 
+            </div>
           )
     }
   }
 
   return (
     <div>
-      <img src={logo} alt="logo" width="50%"></img> <br></br>
-      <button onClick={() => handleViewChange(1)}>Main</button>
-      <button onClick={() => getAllProducts()}>Menu</button>
-      {getView()}
+      <img src={logo} alt="logo" width="20%" class="logo"></img>
+      <div class="main-view">
+        <div style={{ height: '125px' }}></div>
+        <div class="navigator">
+          <button onClick={() => handleViewChange(1)}>Home</button>
+          <button onClick={() => getAllProducts()}>Menu</button>
+          <button onClick={() => handleViewChange(3)}>Contact Us</button>
+        </div>
+        {getView()}
+
+      </div>
     </div>
   );
 }
