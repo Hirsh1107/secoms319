@@ -39,16 +39,6 @@ app.get("/:category", async (req, resp) => {
     resp.send(products);
 });
 
-app.get("/:id", async (req, resp) => {
-    const id = req.params.id;
-    const query = { _id: id };
-    const oneProduct = await Product.findOne(query);
-    console.log(oneProduct);
-    resp.send(oneProduct);
-});
-
-
-
 app.delete("/delete", async (req, res) => {
     console.log("Delete :", req.body);
     try {

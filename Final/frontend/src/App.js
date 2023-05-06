@@ -34,7 +34,7 @@ function App() {
   }
 
   function handleViewChange(viewnum) {
-    if (viewnum == 2) {
+    if (viewnum === 2) {
       getAllProducts();
     }
     setView(viewnum);
@@ -62,11 +62,15 @@ function App() {
   }
 
   const showAllItems = product.map((el) => (
-    <div key={el._id}>
-    <img src={el.image} width="50px" alt={el.title}/> <br />
-    Title: {el.title} <br />
-    Category: {el.category} <br />
-    Price: {el.price} <br />
+    <div key={el._id} class='row'>
+      <div>
+        <img src={el.image} width="100px" alt={el.title}/> <br />
+      </div>
+      <h3>
+        Title: {el.title} <br />
+        Category: {el.category} <br />
+        Price: {el.price} <br />
+      </h3>
     </div>
   ));
 
