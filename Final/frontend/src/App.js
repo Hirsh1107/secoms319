@@ -6,6 +6,7 @@ import './App.css'
 function App() {
   const [product, setProduct] = useState([]);
   const [view, setView] = useState(1); // 1 - main, 2 - menu, ...
+  const [cartItems, setCartItems] = useState([]);
 
   function handleViewChange(viewnum) {
     setView(viewnum);
@@ -23,11 +24,15 @@ function App() {
   }
 
   const showAllItems = product.map((el) => (
-    <div key={el._id}>
-    <img src={el.image} width="50px" alt={el.title}/> <br />
-    Title: {el.title} <br />
-    Category: {el.category} <br />
-    Price: {el.price} <br />
+    <div key={el._id} class='row'>
+      <div>
+        <img src={el.image} width="100px" alt={el.title}/>
+      </div>
+      <h3>
+        Title: {el.title} <br />
+        Category: {el.category} <br />
+        Price: {el.price} <br />
+      </h3>
     </div>
   ));
 
@@ -45,7 +50,9 @@ function App() {
           return (
             <div>
               <h1>Menu view</h1>
-              {showAllItems}
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                {showAllItems}
+              </div>
             </div>
           );
 

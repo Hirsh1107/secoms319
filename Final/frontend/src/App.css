@@ -34,6 +34,18 @@ button {
     opacity: 0.8;
 }
 
+button.small {
+    width: 100px;
+    height: 30px;
+    font-size: 12px;
+}
+
+button.increment {
+    width:fit-content;
+    height:fit-content;
+    font-size: 12px;
+}
+
 body{
     background-image: url('images/bar.jpg');
     background-size: 2100px 1150px;
@@ -44,3 +56,9 @@ body{
 body * {
     font-family: papyrus;
 }
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
