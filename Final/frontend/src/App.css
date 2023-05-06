@@ -61,4 +61,11 @@ body * {
     display: flex;
     flex-direction: row;
 }
+.menu {
+    display: flex;
+    flex-direction: row;
+}
 
+.space {
+    padding: 50px;
+}

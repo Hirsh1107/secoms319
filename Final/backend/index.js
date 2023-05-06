@@ -31,6 +31,14 @@ app.get("/", async (req, resp) => {
     resp.send(allProducts);
 });
 
+app.get("/:category", async (req, resp) => {
+    const category = req.params.category;
+    const query = { category: category };
+    const products = await Product.find(query);
+    console.log(products);
+    resp.send(products);
+});
+
 app.get("/:id", async (req, resp) => {
     const id = req.params.id;
     const query = { _id: id };
@@ -38,6 +46,8 @@ app.get("/:id", async (req, resp) => {
     console.log(oneProduct);
     resp.send(oneProduct);
 });
+
+
 
 app.delete("/delete", async (req, res) => {
     console.log("Delete :", req.body);

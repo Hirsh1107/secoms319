@@ -9,6 +9,9 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
 
   function handleViewChange(viewnum) {
+    if (viewnum == 2) {
+      getAllProducts();
+    }
     setView(viewnum);
   }
 
@@ -16,11 +19,21 @@ function App() {
     fetch("http://localhost:4000/")
     .then((response) => response.json())
     .then((data) => {
-      console.log("Show Catalog of Products :");
+      console.log("Show all products :");
       console.log(data);
       setProduct(data);
     });
-    handleViewChange(2);
+  }
+
+  function getSomeProducts(category) {
+    console.log(category);
+    fetch("http://localhost:4000/" + category)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Show category :", category);
+      console.log(data);
+      setProduct(data);
+    });
   }
 
   const showAllItems = product.map((el) => (
@@ -49,9 +62,18 @@ function App() {
         case 2: 
           return (
             <div>
-              <h1>Menu view</h1>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                {showAllItems}
+              <h1>Menu</h1>
+              <div class="menu">
+                <div>
+                  <button onClick={() => getAllProducts()}>Show All</button> <br/>
+                  <button onClick={() => getSomeProducts("Appetizer")}>Appetizers</button> <br/>
+                  <button onClick={() => getSomeProducts("Chicken")}>Chicken</button> <br/>
+                  <button onClick={() => getSomeProducts("Beef")}>Beef</button> <br/>
+                  <button onClick={() => getSomeProducts("Seafood")}>Seafood</button> <br/>
+                  <button onClick={() => getSomeProducts("Classic")}>Classic Dishes</button> <br/>
+                </div>
+                <div class='space'></div>
+                <div>{showAllItems}</div>
               </div>
             </div>
           );
@@ -72,7 +94,7 @@ function App() {
         <div style={{ height: '125px' }}></div>
         <div class="navigator">
           <button onClick={() => handleViewChange(1)}>Home</button>
-          <button onClick={() => getAllProducts()}>Menu</button>
+          <button onClick={() => handleViewChange(2)}>Menu</button>
           <button onClick={() => handleViewChange(3)}>Contact Us</button>
         </div>
         {getView()}
