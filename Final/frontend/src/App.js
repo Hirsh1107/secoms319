@@ -6,7 +6,32 @@ import './App.css'
 function App() {
   const [product, setProduct] = useState([]);
   const [view, setView] = useState(1); // 1 - main, 2 - menu, ...
-  const [cartItems, setCartItems] = useState([]);
+
+
+  
+    
+  function getLocalMenuData() {
+    function appendData(data){
+      let mainContainer = document.getElementById("myData");
+      for (let productName in data) {
+      let div = document.createElement("div");
+      div.innerHTML = `<br> <br> <h2> ${productName} </h2>`;
+      mainContainer.appendChild(div);
+      }
+    }
+    fetch('../menuItems.json')
+      .then(function (response) {
+      return response.json();
+      })
+      .then(function (data) {
+      appendData(data);
+      })
+      .catch(function (err) {
+      console.log('error:' + err);
+      })
+      
+
+  }
 
   function handleViewChange(viewnum) {
     if (viewnum == 2) {
@@ -37,15 +62,11 @@ function App() {
   }
 
   const showAllItems = product.map((el) => (
-    <div key={el._id} class='row'>
-      <div>
-        <img src={el.image} width="100px" alt={el.title}/>
-      </div>
-      <h3>
-        Title: {el.title} <br />
-        Category: {el.category} <br />
-        Price: {el.price} <br />
-      </h3>
+    <div key={el._id}>
+    <img src={el.image} width="50px" alt={el.title}/> <br />
+    Title: {el.title} <br />
+    Category: {el.category} <br />
+    Price: {el.price} <br />
     </div>
   ));
 
@@ -91,7 +112,7 @@ function App() {
     <div>
       <img src={logo} alt="logo" width="20%" class="logo"></img>
       <div class="main-view">
-        <div style={{ height: '125px' }}></div>
+        <div style={{ height: '60px' }}></div>
         <div class="navigator">
           <button onClick={() => handleViewChange(1)}>Home</button>
           <button onClick={() => handleViewChange(2)}>Menu</button>
