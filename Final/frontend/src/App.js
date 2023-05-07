@@ -1,115 +1,104 @@
 import { useState, useEffect } from 'react';
-import logo from './images/logo.jpg';
+import logo from './images/logo.jpg';;
+import bar from './images/bar.jpg';
+import frontdesk from './images/frontdesk.jpg';
 import outside from './images/outside.jpg';
-import front from './images/frontdesk.jpg';
-import bar from './images/bar.jpg'
-import './App.css'
+import seatingarea from './images/seatingarea.jpg';
+import './App.css';
 
 function App() {
   const [product, setProduct] = useState([]);
   const [view, setView] = useState(1); // 1 - main, 2 - menu, ...
 
 
-  
-    
-  function getLocalMenuData() {
-    function appendData(data){
-      let mainContainer = document.getElementById("myData");
-      for (let productName in data) {
-      let div = document.createElement("div");
-      div.innerHTML = `<br> <br> <h2> ${productName} </h2>`;
-      mainContainer.appendChild(div);
-      }
-    }
-    fetch('../menuItems.json')
-      .then(function (response) {
-      return response.json();
-      })
-      .then(function (data) {
-      appendData(data);
-      })
-      .catch(function (err) {
-      console.log('error:' + err);
-      })
-      
-
-  }
-
   function handleViewChange(viewnum) {
-    if (viewnum === 2) {
-      getAllProducts();
-    }
     setView(viewnum);
   }
 
   function getAllProducts() {
     fetch("http://localhost:4000/")
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Show all products :");
-      console.log(data);
-      setProduct(data);
-    });
-  }
-
-  function getSomeProducts(category) {
-    console.log(category);
-    fetch("http://localhost:4000/" + category)
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Show category :", category);
-      console.log(data);
-      setProduct(data);
-    });
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Show Catalog of Products :");
+        console.log(data);
+        setProduct(data);
+      });
+    handleViewChange(2);
   }
 
   const showAllItems = product.map((el) => (
-    <div key={el._id} class='row'>
-      <div>
-        <img src={el.image} width="100px" alt={el.title}/> <br />
-      </div>
-      <h3>
-        Title: {el.title} <br />
-        Category: {el.category} <br />
-        Price: {el.price} <br />
-      </h3>
+    <div key={el._id}>
+      <img src={el.image} width="50px" alt={el.title} /> <br />
+      Title: {el.title} <br />
+      Category: {el.category} <br />
+      Price: {el.price} <br />
     </div>
   ));
 
-  //https://www.davenportredlantern.com/ current website for ideas
+  function Carousel(props) {
+
+    const images = [
+      props.slide_1,
+      props.slide_2,
+      props.slide_3,
+      props.slide_4,
+    ];
+
+    const [currentImage, setCurrentImage] = useState(0);
+    const [prevImage, setPrevImage] = useState(images.length - 1);
+
+    useEffect(() => {
+      const intervalId = setInterval(() => {
+        setPrevImage(currentImage);
+        setCurrentImage((currentImage + 1) % images.length);
+      }, 3000);
+      return () => clearInterval(intervalId);
+    }, [currentImage]);
+
+    return (
+      <div className="carousel">
+        {images.map((imageUrl, index) => (
+          <img
+            key={index}
+            src={imageUrl}
+            alt={`Image ${index}`}
+            className={`
+            carousel-image
+            ${index === currentImage ? 'current-image' : ''}
+            ${index === prevImage ? 'prev-image' : ''}
+          `}
+          />
+        ))}
+      </div>
+    );
+  }
+
+  // current website for ideas
   function getView() {
     switch (view) {
       case 1:
         return (
           <div>
-            <h1>Welcome to Red Lantern in Davenport, Iowa! Serving the Quad Cities for 7 years.</h1> 
-
-            <div class='row'>
-              <h2>Red Lantern serves delicious Chinese cuisine at a premier location. Our dishes have been crafted by chefs with over 50 years of combined experience. Come enjoy our wide selection inside our fine dining atmosphere. Or if you are on the go, feel free to order online or through phone, and pick up quickly and conveniently. </h2>
-              <img src={outside} alt='outside' width='200px'></img>
+            <h1>About Us</h1>
+            <div>
+              <Carousel slide_1={frontdesk} slide_2={outside} slide_3={seatingarea} slide_4={bar} />
+              <div style={{width: "800px", position: "absolute", left: "900px"}}>
+                <h2>Red Lantern serves the Davenport area with delicious chinese cuisine.
+                Our specialty dishes have been well-crafted to create a delightful culinary experience.
+                Enjoy the convenience of pickup or delivery when ordering through <a href="https://www.davenportredlantern.com/">Beyond Menu</a>.</h2>
+              </div>
+              
             </div>
-            
           </div>
         );
 
-        case 2: 
-          return (
-            <div>
-              <h1>Menu</h1>
-              <div class="menu">
-                <div>
-                  <button onClick={() => getAllProducts()}>Show All</button> <br/>
-                  <button onClick={() => getSomeProducts("Appetizer")}>Appetizers</button> <br/>
-                  <button onClick={() => getSomeProducts("Chicken")}>Chicken</button> <br/>
-                  <button onClick={() => getSomeProducts("Beef")}>Beef</button> <br/>
-                  <button onClick={() => getSomeProducts("Seafood")}>Seafood</button> <br/>
-                  <button onClick={() => getSomeProducts("Classic")}>Classic Dishes</button> <br/>
-                </div>
-                <div class='space'></div>
-                <div>{showAllItems}</div>
-              </div>
-            </div>
-          );
+      case 2:
+        return (
+          <div>
+            <h1>Menu view</h1>
+            {showAllItems}
+          </div>
+        );
 
         case 3:
           return (
@@ -142,11 +131,10 @@ function App() {
         <div style={{ height: '60px' }}></div>
         <div class="navigator">
           <button onClick={() => handleViewChange(1)}>Home</button>
-          <button onClick={() => handleViewChange(2)}>Menu</button>
+          <button onClick={() => getAllProducts()}>Menu</button>
           <button onClick={() => handleViewChange(3)}>Contact Us</button>
         </div>
         {getView()}
-
       </div>
     </div>
   );

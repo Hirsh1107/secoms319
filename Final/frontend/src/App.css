@@ -1,7 +1,3 @@
-h1 {
-    color: white;
-}
-
 .main-view {
     margin: auto;
     width: 90%;
@@ -42,7 +38,17 @@ body{
 
 body * {
     font-family: papyrus;
+    color: white;
 }
+
+
+.carousel {
+    position: absolute;
+    height: 300px;
+    width: 800px;
+    overflow: hidden;
+    z-index: 2;
+  }
 
 .row {
     display: flex;
@@ -58,11 +64,25 @@ body * {
     justify-content: space-between;
 }
 
-.menu {
-    display: flex;
-    flex-direction: row;
-}
+  
+  .carousel-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+  
+  .current-image {
+    opacity: 1;
+  }  
 
-.space {
-    padding: 50px;
-}
+  .prev-image {
+    z-index: 1;
+  }
+
+  .box {
+    width: 600px;
+  }
