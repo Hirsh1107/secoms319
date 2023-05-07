@@ -102,7 +102,7 @@ function App() {
               <div style={{width: "800px", position: "absolute", left: "900px"}}>
                 <h2>Red Lantern serves the Davenport area with delicious chinese cuisine.
                 Our specialty dishes have been well-crafted to create a delightful culinary experience.
-                Enjoy the convenience of pickup or delivery when ordering through <a href="https://www.davenportredlantern.com/" target='_blank'>Beyond Menu</a>.</h2>
+                Enjoy the convenience of pickup or delivery when ordering through <a href="https://www.davenportredlantern.com/" target='_blank' rel='noreferrer'>Beyond Menu</a>.</h2>
               </div>
               
             </div>
