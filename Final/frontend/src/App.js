@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import logo from './images/logo.jpg';;
+import logo from './images/logo.jpg';
 import bar from './images/bar.jpg';
 import frontdesk from './images/frontdesk.jpg';
 import outside from './images/outside.jpg';
@@ -12,6 +12,9 @@ function App() {
 
 
   function handleViewChange(viewnum) {
+    if (viewnum === 2) {
+      getAllProducts();
+    }
     setView(viewnum);
   }
 
@@ -19,19 +22,33 @@ function App() {
     fetch("http://localhost:4000/")
       .then((response) => response.json())
       .then((data) => {
-        console.log("Show Catalog of Products :");
+        console.log("Show all products :");
         console.log(data);
         setProduct(data);
       });
-    handleViewChange(2);
+  }
+
+  function getSomeProducts(category) {
+    console.log(category);
+    fetch("http://localhost:4000/" + category)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Show category :", category);
+      console.log(data);
+      setProduct(data);
+    });
   }
 
   const showAllItems = product.map((el) => (
-    <div key={el._id}>
-      <img src={el.image} width="50px" alt={el.title} /> <br />
-      Title: {el.title} <br />
-      Category: {el.category} <br />
-      Price: {el.price} <br />
+    <div key={el._id} class='row'>
+      <div>
+        <img src={el.image} width="100px" alt={el.title} />
+      </div>
+      <h3>
+        Title: {el.title} <br />
+        Category: {el.category} <br />
+        Price: {el.price} <br />
+      </h3>
     </div>
   ));
 
@@ -85,7 +102,7 @@ function App() {
               <div style={{width: "800px", position: "absolute", left: "900px"}}>
                 <h2>Red Lantern serves the Davenport area with delicious chinese cuisine.
                 Our specialty dishes have been well-crafted to create a delightful culinary experience.
-                Enjoy the convenience of pickup or delivery when ordering through <a href="https://www.davenportredlantern.com/">Beyond Menu</a>.</h2>
+                Enjoy the convenience of pickup or delivery when ordering through <a href="https://www.davenportredlantern.com/" target='_blank'>Beyond Menu</a>.</h2>
               </div>
               
             </div>
@@ -95,8 +112,19 @@ function App() {
       case 2:
         return (
           <div>
-            <h1>Menu view</h1>
-            {showAllItems}
+            <h1>Menu</h1>
+              <div class="menu">
+                <div>
+                  <button onClick={() => getAllProducts()}>Show All</button> <br/>
+                  <button onClick={() => getSomeProducts("Appetizer")}>Appetizers</button> <br/>
+                  <button onClick={() => getSomeProducts("Chicken")}>Chicken</button> <br/>
+                  <button onClick={() => getSomeProducts("Beef")}>Beef</button> <br/>
+                  <button onClick={() => getSomeProducts("Seafood")}>Seafood</button> <br/>
+                  <button onClick={() => getSomeProducts("Classic")}>Classic Dishes</button> <br/>
+                </div>
+                <div class='space'></div>
+                <div>{showAllItems}</div>
+              </div>
           </div>
         );
 
@@ -110,7 +138,7 @@ function App() {
                   <h2>Location: 4009 E 53rd St. Davenport, IA 52807</h2>
                   <h2>Phone: (563) 355-7970</h2>
                 </div>
-                  <img src={front} alt='front' width='300px'></img>
+                  <img src={frontdesk} alt='front' width='300px'></img>
                 <div>
                 </div>
                 <div class='column'>
@@ -131,7 +159,7 @@ function App() {
         <div style={{ height: '60px' }}></div>
         <div class="navigator">
           <button onClick={() => handleViewChange(1)}>Home</button>
-          <button onClick={() => getAllProducts()}>Menu</button>
+          <button onClick={() => handleViewChange(2)}>Menu</button>
           <button onClick={() => handleViewChange(3)}>Contact Us</button>
         </div>
         {getView()}
