@@ -48,6 +48,16 @@ body * {
     display: flex;
     flex-direction: row;
 }
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.end {
+    justify-content: space-between;
+}
+
 .menu {
     display: flex;
     flex-direction: row;

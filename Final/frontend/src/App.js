@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
-import logo from './images/logo.jpg'
+import logo from './images/logo.jpg';
+import outside from './images/outside.jpg';
+import front from './images/frontdesk.jpg';
 import bar from './images/bar.jpg'
 import './App.css'
 
@@ -80,7 +82,13 @@ function App() {
       case 1:
         return (
           <div>
-            <h1>Main view with restaurant details</h1> 
+            <h1>Welcome to Red Lantern in Davenport, Iowa! Serving the Quad Cities for 7 years.</h1> 
+
+            <div class='row'>
+              <h2>Red Lantern serves delicious Chinese cuisine at a premier location. Our dishes have been crafted by chefs with over 50 years of combined experience. Come enjoy our wide selection inside our fine dining atmosphere. Or if you are on the go, feel free to order online or through phone, and pick up quickly and conveniently. </h2>
+              <img src={outside} alt='outside' width='200px'></img>
+            </div>
+            
           </div>
         );
 
@@ -106,7 +114,22 @@ function App() {
         case 3:
           return (
             <div>
-              <h1>Contact page</h1> 
+              <h1>Questions? Contact Us! </h1>
+
+              <div class='row end'>
+                <div class='column'>
+                  <h2>Location: 4009 E 53rd St. Davenport, IA 52807</h2>
+                  <h2>Phone: (563) 355-7970</h2>
+                </div>
+                  <img src={front} alt='front' width='300px'></img>
+                <div>
+                </div>
+                <div class='column'>
+                  <h2>Hours of Operation</h2>
+                  <h4>Monday: Closed</h4>
+                  <h4>Tuesday-Sunday: 11:00am - 09:00pm</h4>
+                </div>
+              </div>
             </div>
           )
     }
