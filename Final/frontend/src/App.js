@@ -11,21 +11,12 @@ function App() {
   const [view, setView] = useState(1); // 1 - main, 2 - menu, ...
 
 
+
   function handleViewChange(viewnum) {
     if (viewnum === 2) {
-      getAllProducts();
+      getSomeProducts("Appetizer");
     }
     setView(viewnum);
-  }
-
-  function getAllProducts() {
-    fetch("http://localhost:4000/")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Show all products :");
-        console.log(data);
-        setProduct(data);
-      });
   }
 
   function getSomeProducts(category) {
@@ -40,15 +31,16 @@ function App() {
   }
 
   const showAllItems = product.map((el) => (
-    <div key={el._id} class='row'>
-      <div>
-        <img src={el.image} width="100px" alt={el.title} />
+    <div key={el._id}>
+      <div class='menuitem row'>
+        <div>
+          <img src={el.image} width="100px" alt={el.title} class="menuimg"/>
+        </div>
+        <div>
+          <h2>{el.title} <br /></h2>
+          <i>Price: {el.price} <br /></i>
+        </div>
       </div>
-      <h3>
-        Title: {el.title} <br />
-        Category: {el.category} <br />
-        Price: {el.price} <br />
-      </h3>
     </div>
   ));
 
@@ -97,15 +89,18 @@ function App() {
         return (
           <div>
             <h1>About Us</h1>
-            <div>
+            <div class='backgroundthing'>
               <Carousel slide_1={frontdesk} slide_2={outside} slide_3={seatingarea} slide_4={bar} />
               <div style={{width: "800px", position: "absolute", left: "900px"}}>
-                <h2>Red Lantern serves the Davenport area with delicious chinese cuisine.
+                <p class='home'>Red Lantern serves the Davenport area with delicious chinese cuisine.
                 Our specialty dishes have been well-crafted to create a delightful culinary experience.
-                Enjoy the convenience of pickup or delivery when ordering through <a href="https://www.davenportredlantern.com/" target='_blank' rel='noreferrer'>Beyond Menu</a>.</h2>
+                Enjoy the convenience of pickup or delivery when ordering through <a href="https://www.davenportredlantern.com/" target='_blank' rel='noreferrer'>Beyond Menu</a>.</p>
               </div>
-              
             </div>
+            <div class='foot'>
+                <p>This webpage was created for SE/ComS319 Construction of User Interfaces, Spring 2023 @ Iowa State University taught by <a href="mailto:aaldaco@iastate.edu">Dr. Abraham N. Aldaco Gastelum</a>. Created on May 06, 2023.</p>
+                <p>Created by <a href="mailto:jjiang27@iastate.edu">Jason Jiang</a> and <a href="mailto:ahirsh@iastate.edu">Andrew Hirsh</a>. View all of our projects <a href="https://github.com/JJiang76/secoms319" target="_blank">here</a></p>
+              </div>
           </div>
         );
 
@@ -113,17 +108,22 @@ function App() {
         return (
           <div>
             <h1>Menu</h1>
-              <div class="menu">
+              <div class="row">
                 <div>
-                  <button onClick={() => getAllProducts()}>Show All</button> <br/>
-                  <button onClick={() => getSomeProducts("Appetizer")}>Appetizers</button> <br/>
-                  <button onClick={() => getSomeProducts("Chicken")}>Chicken</button> <br/>
-                  <button onClick={() => getSomeProducts("Beef")}>Beef</button> <br/>
-                  <button onClick={() => getSomeProducts("Seafood")}>Seafood</button> <br/>
-                  <button onClick={() => getSomeProducts("Classic")}>Classic Dishes</button> <br/>
+                  <button class='menuButton' onClick={() => getSomeProducts("Appetizer")}>Appetizers</button> <br/>
+                  <button class='menuButton' onClick={() => getSomeProducts("Chicken")}>Chicken</button> <br/>
+                  <button class='menuButton' onClick={() => getSomeProducts("Beef")}>Beef</button> <br/>
+                  <button class='menuButton' onClick={() => getSomeProducts("Seafood")}>Seafood</button> <br/>
+                  <button class='menuButton' onClick={() => getSomeProducts("Classic")}>Classic Dishes</button> <br/>
                 </div>
                 <div class='space'></div>
-                <div>{showAllItems}</div>
+                <div class='menu'>
+                  {showAllItems}
+                </div>
+              </div>
+              <div class='foot'>
+                <p>This webpage was created for SE/ComS319 Construction of User Interfaces, Spring 2023 @ Iowa State University taught by <a href="mailto:aaldaco@iastate.edu">Dr. Abraham N. Aldaco Gastelum</a>. Created on May 06, 2023.</p>
+                <p>Created by <a href="mailto:jjiang27@iastate.edu">Jason Jiang</a> and <a href="mailto:ahirsh@iastate.edu">Andrew Hirsh</a>. View all of our projects <a href="https://github.com/JJiang76/secoms319" target="_blank">here</a></p>
               </div>
           </div>
         );
@@ -132,20 +132,19 @@ function App() {
           return (
             <div>
               <h1>Questions? Contact Us! </h1>
-
               <div class='row end'>
                 <div class='column'>
                   <h2>Location: 4009 E 53rd St. Davenport, IA 52807</h2>
                   <h2>Phone: (563) 355-7970</h2>
+                  <br/>
+                  <h3>Hours of Operation</h3>
+                  <h4>- Monday: Closed</h4>
+                  <h4>- Tuesday-Sunday: 11:00am - 09:00pm</h4>
                 </div>
-                  <img src={frontdesk} alt='front' width='300px'></img>
-                <div>
-                </div>
-                <div class='column'>
-                  <h2>Hours of Operation</h2>
-                  <h4>Monday: Closed</h4>
-                  <h4>Tuesday-Sunday: 11:00am - 09:00pm</h4>
-                </div>
+              </div>
+              <div class='foot'>
+                <p>This webpage was created for SE/ComS319 Construction of User Interfaces, Spring 2023 @ Iowa State University taught by <a href="mailto:aaldaco@iastate.edu">Dr. Abraham N. Aldaco Gastelum</a>. Created on May 06, 2023.</p>
+                <p>Created by <a href="mailto:jjiang27@iastate.edu">Jason Jiang</a> and <a href="mailto:ahirsh@iastate.edu">Andrew Hirsh</a>. View all of our projects <a href="https://github.com/JJiang76/secoms319" target="_blank">here</a></p>
               </div>
             </div>
           )
@@ -154,10 +153,10 @@ function App() {
 
   return (
     <div>
-      <img src={logo} alt="logo" width="20%" class="logo"></img>
       <div class="main-view">
         <div style={{ height: '60px' }}></div>
         <div class="navigator">
+        <img src={logo} alt="logo" width="20%" class="logo"></img>
           <button onClick={() => handleViewChange(1)}>Home</button>
           <button onClick={() => handleViewChange(2)}>Menu</button>
           <button onClick={() => handleViewChange(3)}>Contact Us</button>

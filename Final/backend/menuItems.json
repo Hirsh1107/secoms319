@@ -1,37 +1,177 @@
 [
     {
         "_id": 1,
-        "title": "Crab Wontons",
+        "title": "Crab Wontons (6)",
         "price": 5.95,
         "category": "Appetizer",
         "image": "http://127.0.0.1:4000/images/img1.jpg"
     },
     {
         "_id": 2,
-        "title": "General Tso's Chicken",
-        "price": 12.25,
-        "category": "Chicken",
-        "image": "http://127.0.0.1:4000/images/img2.jpg"
+        "title": "Spring Rolls (2)",
+        "price": 3.95,
+        "category": "Appetizer",
+        "image": "http://127.0.0.1:4000/images/food-placeholder.jpg"
     },
     {
         "_id": 3,
-        "title": "Kung Pao Chicken",
-        "price": 10.95,
-        "category": "Chicken",
-        "image": "http://127.0.0.1:4000/images/img3.jpg"
+        "title": "Chicken Lettuce Wraps",
+        "price": 7.25,
+        "category": "Appetizer",
+        "image": "http://127.0.0.1:4000/images/food-placeholder.jpg"
     },
     {
         "_id": 4,
-        "title": "Mongolian Beef",
-        "price": 11.95,
-        "category": "Beef",
-        "image": "http://127.0.0.1:4000/images/img4.jpg"
+        "title": "Pork Dumplings",
+        "price": 5.95,
+        "category": "Appetizer",
+        "image": "http://127.0.0.1:4000/images/food-placeholder.jpg"
     },
     {
         "_id": 5,
+        "title": "Scallion Pancakes",
+        "price": 5.95,
+        "category": "Appetizer",
+        "image": "http://127.0.0.1:4000/images/food-placeholder.jpg"
+    },
+    {
+        "_id": 6,
+        "title": "General Tso's Chicken",
+        "price": 12.25,
+        "category": "Chicken",
+        "image": "http://127.0.0.1:4000/images/img6.jpg"
+    },
+    {
+        "_id": 7,
+        "title": "Kung Pao Chicken",
+        "price": 10.95,
+        "category": "Chicken",
+        "image": "http://127.0.0.1:4000/images/img7.jpg"
+    },
+    {
+        "_id": 8,
+        "title": "Sesame Chicken",
+        "price": 12.25,
+        "category": "Chicken",
+        "image": "http://127.0.0.1:4000/images/img8.jpg"
+    },
+    {
+        "_id": 9,
+        "title": "Sweet and Sour Chicken",
+        "price": 10.95,
+        "category": "Chicken",
+        "image": "http://127.0.0.1:4000/images/img9.jpg"
+    },
+    {
+        "_id": 10,
+        "title": "Moo Shu Chicken",
+        "price": 10.95,
+        "category": "Chicken",
+        "image": "http://127.0.0.1:4000/images/food-placeholder.jpg"
+    },
+    {
+        "_id": 11,
+        "title": "Mongolian Beef",
+        "price": 11.95,
+        "category": "Beef",
+        "image": "http://127.0.0.1:4000/images/img11.jpg"
+    },
+    {
+        "_id": 12,
+        "title": "Pepper Steak",
+        "price": 11.95,
+        "category": "Beef",
+        "image": "http://127.0.0.1:4000/images/food-placeholder.jpg"
+    },
+    {
+        "_id": 13,
+        "title": "Beef w/ Broccoli",
+        "price": 11.95,
+        "category": "Beef",
+        "image": "http://127.0.0.1:4000/images/food-placeholder.jpg"
+    },
+    {
+        "_id": 14,
+        "title": "Hunan Beef",
+        "price": 11.95,
+        "category": "Beef",
+        "image": "http://127.0.0.1:4000/images/food-placeholder.jpg"
+    },
+    {
+        "_id": 15,
+        "title": "Sa Cha Beef",
+        "price": 11.95,
+        "category": "Beef",
+        "image": "http://127.0.0.1:4000/images/food-placeholder.jpg"
+    },
+    {
+        "_id": 16,
         "title": "Hunan Style Hot Fish",
         "price": 12.95,
         "category": "Seafood",
-        "image": "http://127.0.0.1:4000/images/img5.jpg"
+        "image": "http://127.0.0.1:4000/images/img16.jpg"
+    },
+    {
+        "_id": 17,
+        "title": "Shrimp or Scallops w/ Garlic Sauce",
+        "price": 12.95,
+        "category": "Seafood",
+        "image": "http://127.0.0.1:4000/images/img17.jpg"
+    },
+    {
+        "_id": 18,
+        "title": "Sesame Shrimp or Scallops",
+        "price": 12.95,
+        "category": "Seafood",
+        "image": "http://127.0.0.1:4000/images/food-placeholder.jpg"
+    },
+    {
+        "_id": 19,
+        "title": "Salt and Pepper Shrimp",
+        "price": 13.95,
+        "category": "Seafood",
+        "image": "http://127.0.0.1:4000/images/food-placeholder.jpg"
+    },
+    {
+        "_id": 20,
+        "title": "Shrimp w/ Lobster Sauce",
+        "price": 12.95,
+        "category": "Seafood",
+        "image": "http://127.0.0.1:4000/images/food-placeholder.jpg"
+    },
+    {
+        "_id": 21,
+        "title": "Lo Mein",
+        "price": 8.95,
+        "category": "Classic",
+        "image": "http://127.0.0.1:4000/images/img21.jpg"
+    },
+    {
+        "_id": 22,
+        "title": "Fried Rice",
+        "price": 7.95,
+        "category": "Classic",
+        "image": "http://127.0.0.1:4000/images/food-placeholder.jpg"
+    },
+    {
+        "_id": 23,
+        "title": "Mei Fun",
+        "price": 9.95,
+        "category": "Classic",
+        "image": "http://127.0.0.1:4000/images/food-placeholder.jpg"
+    },
+    {
+        "_id": 24,
+        "title": "Chow Fun",
+        "price": 9.95,
+        "category": "Classic",
+        "image": "http://127.0.0.1:4000/images/food-placeholder.jpg"
+    },
+    {
+        "_id": 25,
+        "title": "Double Pan Fried Noodles",
+        "price": 9.95,
+        "category": "Classic",
+        "image": "http://127.0.0.1:4000/images/food-placeholder.jpg"
     }
 ]
