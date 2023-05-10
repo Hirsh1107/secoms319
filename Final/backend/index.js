@@ -39,6 +39,7 @@ app.get("/:category", async (req, resp) => {
     resp.send(products);
 });
 
+
 app.delete("/delete", async (req, res) => {
     console.log("Delete :", req.body);
     try {

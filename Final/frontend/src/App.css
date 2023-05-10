@@ -53,7 +53,7 @@ body{
     background-blend-mode: multiply;
 }
 
-body * {
+body {
     font-family:  'Helvetica';
     color: white;
 }
@@ -128,4 +128,10 @@ body * {
 .foot {
     position:absolute;
     bottom:0px;
+ }
+
+ .formbtn {
+    font-size: 20px;
+    width: fit-content;
+    height: fit-content;
  }
