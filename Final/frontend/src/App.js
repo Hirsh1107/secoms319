@@ -230,71 +230,71 @@ function App() {
           </div>
         );
 
-        case 3:
-          return (
-            <div>
-              <h1>Questions? Contact Us! </h1>
-              <div class='row end'>
-                <div class='column'>
-                  <h2>Location: 4009 E 53rd St. Davenport, IA 52807</h2>
-                  <h2>Phone: (563) 355-7970</h2>
-                  <br/>
-                  <h3>Hours of Operation</h3>
-                  <h4>- Monday: Closed</h4>
-                  <h4>- Tuesday-Sunday: 11:00am - 09:00pm</h4>
-                </div>
-              </div>
-              <div class='foot'>
-                <p>This webpage was created for SE/ComS319 Construction of User Interfaces, Spring 2023 @ Iowa State University taught by <a href="mailto:aaldaco@iastate.edu">Dr. Abraham N. Aldaco Gastelum</a>. Created on May 06, 2023.</p>
-                <p>Created by <a href="mailto:jjiang27@iastate.edu">Jason Jiang</a> and <a href="mailto:ahirsh@iastate.edu">Andrew Hirsh</a>. View all of our projects <a href="https://github.com/JJiang76/secoms319" target="_blank">here</a></p>
+      case 3:
+        return (
+          <div>
+            <h1>Questions? Contact Us! </h1>
+            <div class='row end'>
+              <div class='column'>
+                <h2>Location: 4009 E 53rd St. Davenport, IA 52807</h2>
+                <h2>Phone: (563) 355-7970</h2>
+                <br/>
+                <h3>Hours of Operation</h3>
+                <h4>- Monday: Closed</h4>
+                <h4>- Tuesday-Sunday: 11:00am - 09:00pm</h4>
               </div>
             </div>
-          );
+            <div class='foot'>
+              <p>This webpage was created for SE/ComS319 Construction of User Interfaces, Spring 2023 @ Iowa State University taught by <a href="mailto:aaldaco@iastate.edu">Dr. Abraham N. Aldaco Gastelum</a>. Created on May 06, 2023.</p>
+              <p>Created by <a href="mailto:jjiang27@iastate.edu">Jason Jiang</a> and <a href="mailto:ahirsh@iastate.edu">Andrew Hirsh</a>. View all of our projects <a href="https://github.com/JJiang76/secoms319" target="_blank">here</a></p>
+            </div>
+          </div>
+        );
 
-          case 4: 
-            return (
-              <div class='row end'>
-                <div>
-                  <h1>Add Menu Item</h1>
-                  <form action="POST">
-                    <input type="number" placeholder="id?" name="_id" value={addNewProduct._id} onChange={handleChange} />
-                    <label for="_id"> Id</label>
-                    <br></br>
-                    <input type="text" placeholder="title?" name="title" value={addNewProduct.title} onChange={handleChange} />
-                    <label for="title"> Title</label>
-                    <br></br>
-                    <input type="number" placeholder="price?" name="price" value={addNewProduct.price} onChange={handleChange} />
-                    <label for="price"> Price</label>
-                    <br></br>
-                    <input type="text" placeholder="category?" name="category" value={addNewProduct.category} onChange={handleChange} />
-                    <label for="category"> Category</label>
-                    <br></br>
-                    <input type="text" placeholder="image?" name="image" value={addNewProduct.image} onChange={handleChange} />
-                    <label for="image"> Image source</label>
-                    <br></br>
-                    <button class='formbtn' type="submit" onClick={handleOnSubmit}>Submit</button>
-                  </form>
-                </div>
-                <div>
-                  <h1>Change Menu Item Price</h1>
-                  <input type="number" id="update1" name="_id" placeholder="id" value={updateProduct._id} onChange={handleUpdate} />
-                  <label for="update1">Which Product to modify?</label>
-                  <br />
-                  <input type="number" id="change" name="price" placeholder="price" value={updateProduct.price} onChange={handleUpdate}/>
-                  <label for="change">What is the new price?</label>
-                  <br />
-                  <button class='formbtn' onClick={() => updateItem(updateProduct._id)}>Update</button>
-                </div>
-                <div>
-                  <h1>Delete Menu Item</h1>
-                  <input type="text" id="message" name="message" placeholder="id" value={id} onChange={handleDelete} />
-                  <label for="message">Which Product to delete?</label>
-                  <br></br>
-                  <button class='formbtn' onClick={() => deleteOneProduct(id)}>Delete</button>
-                </div>
-              </div>
-            );
-    }
+      case 4: 
+        return (
+          <div class='row end'>
+            <div>
+              <h1>Add Menu Item</h1>
+              <form action="POST">
+                <input type="number" placeholder="id?" name="_id" value={addNewProduct._id} onChange={handleChange} />
+                <label for="_id"> Id</label>
+                <br></br>
+                <input type="text" placeholder="title?" name="title" value={addNewProduct.title} onChange={handleChange} />
+                <label for="title"> Title</label>
+                <br></br>
+                <input type="number" placeholder="price?" name="price" value={addNewProduct.price} onChange={handleChange} />
+                <label for="price"> Price</label>
+                <br></br>
+                <input type="text" placeholder="category?" name="category" value={addNewProduct.category} onChange={handleChange} />
+                <label for="category"> Category</label>
+                <br></br>
+                <input type="text" placeholder="image?" name="image" value={addNewProduct.image} onChange={handleChange} />
+                <label for="image"> Image source</label>
+                <br></br>
+                <button class='formbtn' type="submit" onClick={handleOnSubmit}>Submit</button>
+              </form>
+            </div>
+            <div>
+              <h1>Change Menu Item Price</h1>
+              <input type="number" id="update1" name="_id" placeholder="id" value={updateProduct._id} onChange={handleUpdate} />
+              <label for="update1">Which Product to modify?</label>
+              <br />
+              <input type="number" id="change" name="price" placeholder="price" value={updateProduct.price} onChange={handleUpdate}/>
+              <label for="change">What is the new price?</label>
+              <br />
+              <button class='formbtn' onClick={() => updateItem(updateProduct._id)}>Update</button>
+            </div>
+            <div>
+              <h1>Delete Menu Item</h1>
+              <input type="text" id="message" name="message" placeholder="id" value={id} onChange={handleDelete} />
+              <label for="message">Which Product to delete?</label>
+              <br></br>
+              <button class='formbtn' onClick={() => deleteOneProduct(id)}>Delete</button>
+            </div>
+          </div>
+        );
+}
   }
 
   return (
